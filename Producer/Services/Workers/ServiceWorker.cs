@@ -26,7 +26,7 @@ namespace Services.Workers
             });
         }
 
-        public async Task SendListAsync<T>(List<T> list) 
-            => await Task.Run(() => list.ForEach(async i => await SendAsync(i, QueueName.PEOPLE)));
+        public async Task SendListAsync<T>(List<T> list, QueueName queueName) 
+            => await Task.Run(() => list.ForEach(async i => await SendAsync(i, queueName)));
     }
 }

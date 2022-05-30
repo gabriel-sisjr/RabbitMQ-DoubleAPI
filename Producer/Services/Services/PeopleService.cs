@@ -17,6 +17,7 @@ namespace Services.Services
                 .RuleFor(p => p.Id, () => Guid.NewGuid())
                 .RuleFor(p => p.Name, r => r.Person.FullName)
                 .RuleFor(p => p.Phone, r => r.Person.Phone)
+                .RuleFor(p => p.Email, r => r.Person.Email)
                 .Generate(10);
 
             _worker = worker;
@@ -25,15 +26,25 @@ namespace Services.Services
         public async Task<bool> InsertListAsync() 
             => await Task.Run(async () =>
             {
-                await _worker.SendListAsync(_people);
+                // Some pseudo code
+                await _worker.SendListAsync(_people, QueueName.PEOPLE);
+
+                // Another treatement
+                await _worker.SendAsync(_people, QueueName.EMAIL); 
                 return true;
             });
 
         public async Task<bool> InsertAsync(People people)
             => await Task.Run(async () =>
             {
+                // Ficticious Repository Call
                 _people.Add(people);
                 await _worker.SendAsync(people, QueueName.PEOPLE);
+
+                // Some logic
+                // ...
+
+                await _worker.SendAsync(people, QueueName.EMAIL);
                 return true;
             });
     }

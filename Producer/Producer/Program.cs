@@ -1,20 +1,14 @@
-using Domain.Interfaces.Services;
-using Domain.Models.Workers;
-using Services.Services;
-using Services.Workers;
+using Producer.Configuration.Extensions.Injections.Services;
+using Producer.Configuration.Extensions.Injections.Workers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<IPeopleService, PeopleService>();
-if (Environment.GetEnvironmentVariable("AMBIENT") == "CONTAINER")
-{
-    var settings = builder.Configuration.GetSection("RabbitMqSettings").Get<RabbitSettings>();
-    builder.Services.AddSingleton(x => RabbitSetup.CreateBus(settings!));
-}
-else
-    builder.Services.AddSingleton(x => RabbitSetup.CreateBus("localhost"));
+builder.Services
+    .AddServices()
+    .AddWorkersSetup(builder.Configuration);
 
+// Controllers
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

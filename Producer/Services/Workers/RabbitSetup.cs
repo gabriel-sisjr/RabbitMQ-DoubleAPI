@@ -1,6 +1,5 @@
 ﻿using Domain.Interfaces.Services.Workers;
 using Domain.Models.Workers;
-using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 
 namespace Services.Workers
