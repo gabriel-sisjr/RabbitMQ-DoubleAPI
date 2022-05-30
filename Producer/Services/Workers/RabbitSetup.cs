@@ -1,5 +1,6 @@
 ﻿using Domain.Interfaces.Services.Workers;
 using Domain.Models.Workers;
+using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 
 namespace Services.Workers
@@ -25,7 +26,6 @@ namespace Services.Workers
             {
                 HostName = settings.HostName,
                 Port = settings.Port,
-                VirtualHost = settings.VirtualHost,
                 UserName = settings.Username,
                 Password = settings.Password,
                 DispatchConsumersAsync = true

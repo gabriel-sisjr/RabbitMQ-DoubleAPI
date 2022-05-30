@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.10.1-management
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    container_name: "rabbitmq"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - my-network
+  producer:
+    build: ./Producer
+    container_name: producer
+    environment:
+      - AMBIENT=CONTAINER
+    ports:
+      - 8080:80
+      - 8081:443
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - my-network
+  consumer:
+    build: ./Consumer
+    container_name: consumer
+    environment:
+      - AMBIENT=CONTAINER
+    ports:
+      - 8082:80
+      - 8083:443
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - my-network
+networks:
+  my-network:
+    driver: bridge

@@ -25,7 +25,6 @@ namespace Services.Workers
             {
                 HostName = settings.HostName,
                 Port = settings.Port,
-                VirtualHost = settings.VirtualHost,
                 UserName = settings.Username,
                 Password = settings.Password,
                 DispatchConsumersAsync = true
