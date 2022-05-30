@@ -25,5 +25,8 @@ namespace Services.Workers
                 _channel.BasicPublish(string.Empty, queue, null, Encoding.UTF8.GetBytes(output));
             });
         }
+
+        public async Task SendListAsync<T>(List<T> list) 
+            => await Task.Run(() => list.ForEach(async i => await SendAsync(i, QueueName.PEOPLE)));
     }
 }

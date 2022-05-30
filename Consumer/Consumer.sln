@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "Consumer\Consumer.csproj", "{1C3BF64A-9CA4-4E43-8329-F2244C8605B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{72FF2BDE-E636-4D6A-B655-4E41E808D902}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{E8FA1DC4-9EF8-4802-B219-F4640936CE65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C3BF64A-9CA4-4E43-8329-F2244C8605B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C3BF64A-9CA4-4E43-8329-F2244C8605B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C3BF64A-9CA4-4E43-8329-F2244C8605B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C3BF64A-9CA4-4E43-8329-F2244C8605B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72FF2BDE-E636-4D6A-B655-4E41E808D902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72FF2BDE-E636-4D6A-B655-4E41E808D902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72FF2BDE-E636-4D6A-B655-4E41E808D902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72FF2BDE-E636-4D6A-B655-4E41E808D902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8FA1DC4-9EF8-4802-B219-F4640936CE65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8FA1DC4-9EF8-4802-B219-F4640936CE65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8FA1DC4-9EF8-4802-B219-F4640936CE65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8FA1DC4-9EF8-4802-B219-F4640936CE65}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDA59777-3BAE-4F96-9E3F-25BAA2202190}
+	EndGlobalSection
+EndGlobal

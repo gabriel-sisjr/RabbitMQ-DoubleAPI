@@ -2,7 +2,7 @@
 {
     public enum QueueName
     {
-        PERSON,
+        PEOPLE,
         EMAIL
     }
 }

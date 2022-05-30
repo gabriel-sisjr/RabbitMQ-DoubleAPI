@@ -22,13 +22,18 @@ namespace Services.Services
             _worker = worker;
         }
 
-        public async Task<IEnumerable<People>> GetAllAsync() => await Task.Run(() => _people);
+        public async Task<bool> InsertListAsync() 
+            => await Task.Run(async () =>
+            {
+                await _worker.SendListAsync(_people);
+                return true;
+            });
 
         public async Task<bool> InsertAsync(People people)
             => await Task.Run(async () =>
             {
                 _people.Add(people);
-                await _worker.SendAsync(people, QueueName.PERSON);
+                await _worker.SendAsync(people, QueueName.PEOPLE);
                 return true;
             });
     }

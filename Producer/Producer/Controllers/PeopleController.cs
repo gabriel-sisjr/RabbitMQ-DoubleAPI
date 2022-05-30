@@ -12,11 +12,13 @@ namespace Producer.Controllers
 
         public PeopleController(IPeopleService personService) => _peopleService = personService;
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpPost("List")]
+        public async Task<IActionResult> Post()
         {
-            var peoples = await _peopleService.GetAllAsync();
-            return Ok(peoples);
+            if(await _peopleService.InsertListAsync())
+                return Ok();
+
+            return BadRequest();
         }
 
         [HttpPost]
